@@ -304,5 +304,11 @@ export default defineUserConfig<DefaultThemeOptions>({
         sitemaps: ['https://grammy.dev/sitemap.xml']
       },
     ],
+    [{
+      name: 'shiki-markdown',
+      extendsMarkdown: (md) => {
+        md.use(require('markdown-it-shiki-twoslash'), { theme: 'dark-plus' })
+      }
+    }]
   ],
 });
