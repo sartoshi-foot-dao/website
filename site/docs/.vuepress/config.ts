@@ -308,11 +308,20 @@ export default defineUserConfig<DefaultThemeOptions>({
         sitemaps: ["https://grammy.dev/sitemap.xml"],
       },
     ],
-    [{
-      name: 'shiki-markdown',
-      extendsMarkdown: (md) => {
-        md.use(require('markdown-it-shiki-twoslash'), { theme: 'dark-plus' })
-      }
-    }]
+    [
+      {
+        name: "shiki-markdown",
+        extendsMarkdown: async (md) => {
+          // This import fails:
+          const { markdownItShikiTwoslashSetup } = await import(
+            "markdown-it-shiki-twoslash"
+          );
+          const shiki = await markdownItShikiTwoslashSetup({
+            theme: "dark-plus",
+          });
+          md.use(shiki);
+        },
+      },
+    ],
   ],
 });
