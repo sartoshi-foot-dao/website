@@ -5,6 +5,7 @@
     // everything except .vuepress
     "./site/docs/advanced/",
     "./site/docs/demo/",
+    "./site/docs/es/",
     "./site/docs/guide/",
     "./site/docs/hosting/",
     "./site/docs/plugins/",
